@@ -18,6 +18,11 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
+	for (let key in req.body) {
+		if (req.body[key] === '') {
+			delete req.body[key];
+		}
+	}
 	console.log("DEBUGGING =================");
 	console.log(req.body);
 	console.log(" ================= DEBUGGING");

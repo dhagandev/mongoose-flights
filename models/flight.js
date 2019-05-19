@@ -17,8 +17,8 @@ var flightSchema = new Schema({
 		type: Date,
 		default: function() {
 			console.log(" CREATE DEFAULT DATE")
-			let year = Date.now().getFullYear() + 1;
-			let datedYear = Date.now().setFullYear(year);
+			let year = new Date().getFullYear() + 1;
+			let datedYear = new Date().setFullYear(year);
 			console.log("DATE IS " + datedYear)
 			return datedYear;
 		}
