@@ -1,0 +1,21 @@
+<% if(flight.destinations.length) { %>
+	<table>
+		<thead>
+			<tr>
+				<th>Destination</th>
+				<th>Arrives At</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% flight.destinations.forEach(function(destination) { %>
+				<tr>
+					<td><%= destination.airport %></td>
+					<td><%= (destination.arrival).toString().slice(4, 16) %></td>
+                	<td><%= (destination.arrival).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+<% } else { %>
+	<h2>No destinations yet</h2>
+<% } %>

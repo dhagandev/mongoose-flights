@@ -43,13 +43,13 @@ function createDest(req, res) {
 	let destination = req.body;
 	Flight.findById(req.params.id, function(err, flight) {
 		console.log("===");
+		console.log(flight)
 		console.log(destination);
 		flight.destinations.push(destination);
 		console.log("===");
 		console.log(flight);
 		console.log("===");
-		flight.save(function(err) {
-			res.render(`flights/show`, {title: 'Details', flight});
-		});
+		flight.save(); //.then(result => console.log(result)).catch(error => console.log(error));
+		res.render(`flights/show`, {title: 'Details', flight});
 	});
 }
