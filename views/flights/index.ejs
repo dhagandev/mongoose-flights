@@ -15,6 +15,7 @@
 				<td><%= flight.flightNo %></td>
                 <td><%= (flight.departs).toString().slice(4, 16) %></td>
                 <td><%= (flight.departs).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></td>
+                <td><a href="/flights/<%= flight._id %>">Details</a></td>
 			</tr>
 		<% }) %>
 	</tbody>
