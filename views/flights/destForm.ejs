@@ -1,0 +1,18 @@
+<h2>Add New Destination</h2>
+<form action="/flights/<%= flight._id %>" method="POST">
+
+	<label>Airport</label>
+	<input list="airport_enum" name="airport">
+
+	<datalist id="airport_enum">
+		<option value="AUS">
+		<option value="DAL">
+		<option value="LAX">
+		<option value="SEA">	
+	</datalist>
+
+	<label>Arrival Date</label>
+	<input type="datetime-local" name="arrives" required>
+
+	<button type="submit">Add Destination</button>
+</form>

@@ -4,11 +4,11 @@ module.exports = {
 	index,
 	new: newFlight,
 	create,
-	show
+	show,
+	createDest
 }
 
 function index(req, res) {
-	console.log("controller index");
     Flight.find({}, function(err, flights) {
         res.render('flights', {title: 'All Flights', flights});
     });
@@ -24,9 +24,6 @@ function create(req, res) {
 			delete req.body[key];
 		}
 	}
-	console.log("DEBUGGING =================");
-	console.log(req.body);
-	console.log(" ================= DEBUGGING");
 	let flight = new Flight(req.body);
 	flight.save(function(err) {
 		if (err) {
@@ -39,5 +36,20 @@ function create(req, res) {
 function show(req, res) {
 	Flight.findById(req.params.id, function(err, flight) {
 		res.render('flights/show', {title: 'Details', flight});
+	});
+}
+
+function createDest(req, res) {
+	let destination = req.body;
+	Flight.findById(req.params.id, function(err, flight) {
+		console.log("===");
+		console.log(destination);
+		flight.destinations.push(destination);
+		console.log("===");
+		console.log(flight);
+		console.log("===");
+		flight.save(function(err) {
+			res.render(`flights/show`, {title: 'Details', flight});
+		});
 	});
 }
