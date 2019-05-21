@@ -9,4 +9,34 @@
 
 <%- include('./destForm') %>
 
+<h2>Tickets Created</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Ticket</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% tickets.forEach(function(ticket) { %>
+			<tr>
+				<td><%= ticket.seat %></td>
+				<td><%= ticket.price %></td>
+			</tr>
+		<% }) %>
+	</tbody>
+</table>
+
+<h2>Add New Ticket</h2>
+<form action="/flights/<%= flight._id %>/ticket" method="POST">
+
+	<label>Seat</label>
+	<input name="seat" required pattern="[A-F][1-9]\d?">
+
+	<label>Price</label>
+	<input type="number" name="price">
+
+	<button type="submit">Add Ticket</button>
+</form>
+
 <%- include('../partials/footer') %>
